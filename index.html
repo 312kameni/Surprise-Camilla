@@ -148,7 +148,7 @@
 </head>
 <body>
 
-    <!-- Musique romantique en ligne directe -->
+    <!-- Musique romantique en ligne -->
     <audio id="bg-music" loop>
         <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf7f6.mp3?filename=romantic-guitars-112134.mp3" type="audio/mpeg">
     </audio>
@@ -157,7 +157,8 @@
 
     <!-- ÉTAPE 1 -->
     <div class="card active" id="step1">
-        <img id="slideshow" src="photo1.jpg" alt="Camilla">
+        <!-- Photo de départ -->
+        <img id="slideshow" src="Photo.jpg" alt="Camilla">
         <h1>Joyeux anniversaire mon amour ❤️ 🎂</h1>
         <p>Désolé de m'être endormi alors que j'aurais aimé être là au bon moment pour te souhaiter ton anniversaire. 🥺</p>
         <button class="btn" onclick="nextStep(2)">SUIVANT ➔</button>
@@ -208,7 +209,7 @@
             // Lancer la musique au premier clic sur Suivant
             if(step === 2) {
                 let music = document.getElementById('bg-music');
-                if (music.paused) { music.play().catch(e => console.log("Audio bloqué par le navigateur")); }
+                if (music.paused) { music.play().catch(e => console.log("Audio bloqué")); }
             }
         }
 
@@ -220,7 +221,7 @@
         }
 
         function sendWhatsApp() {
-            let monNumero = "237672735447"; // <--- REMPLACE BIEN PAR TON NUMÉRO ICI
+            let monNumero = "237672735447"; // <--- REMPLACE BIEN PAR TON NUMÉRO ICI (sans le +)
             let motDoux = document.getElementById('petit-mot').value;
             
             let message = "Mon choix de cadeau d'anniversaire : " + chosenGift + " ❤️";
@@ -232,8 +233,8 @@
             window.location.href = urlWhatsApp;
         }
 
-        // Diaporama de photos (assure-toi d'avoir photo1.jpg, photo2.jpg et photo3.jpg sur ton GitHub)
-        let photos = ["photo1.jpg", "photo2.jpg", "photo3.jpg"];
+        // Diaporama configuré : Photo (début) -> Photo2.JPG (au centre) -> Photo1.jpg (fin)
+        let photos = ["Photo.jpg", "Photo2.JPG", "Photo1.jpg"];
         let photoIndex = 0;
         setInterval(() => {
             photoIndex = (photoIndex + 1) % photos.length;
