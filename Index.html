@@ -116,9 +116,28 @@
             document.getElementById('step' + step).classList.add('active');
         }
 
+        <script>
+        function nextStep(step) {
+            document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
+            document.getElementById('step' + step).classList.add('active');
+        }
+
         function chooseGift(giftName) {
             document.getElementById('final-title').innerText = "Tu as choisi : " + giftName + " ! 🥰";
             nextStep(4);
+            
+            // --- REDIRECTION WHATSAPP AUTOMATIQUE ---
+            // Remplace 237XXXXXXXXX par ton numéro WhatsApp complet avec l'indicatif du pays (ex: 237 pour le Cameroun, sans le +)
+            setTimeout(function() {
+                let monNumero = "237672735447"; 
+                let message = "Mon choix d'anniversaire : " + giftName + " ❤️";
+                let urlWhatsApp = "https://wa.me/" + monNumero + "?text=" + encodeURIComponent(message);
+                
+                // Ouvre WhatsApp avec son choix pré-rempli
+                window.location.href = urlWhatsApp;
+            }, 3000); // Elle verra le message de fin pendant 3 secondes avant d'être redirigée vers WhatsApp
+        }
+    </script>
             // Optionnel : Tu pourrais ajouter une redirection WhatsApp automatique ici si tu veux qu'elle t'envoie son choix directement !
         }
     </script>
