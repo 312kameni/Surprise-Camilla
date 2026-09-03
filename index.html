@@ -5,74 +5,151 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Joyeux Anniversaire mon amour ❤️</title>
     <style>
+        /* Couleurs et animation de fond */
+        :root {
+            --primary: #ff4d6d;
+            --bg-gradient: linear-gradient(135deg, #2b1029, #4a154b, #2b1029);
+        }
         body {
-            background-color: #2c162b;
-            color: white;
+            margin: 0;
+            padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-gradient);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: white;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            margin: 0;
-            padding: 20px;
+            overflow: hidden; 
         }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Cartes transparentes (Effet moderne) */
         .card {
-            background-color: #3d213c;
-            border-radius: 20px;
-            padding: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 35px 25px;
             max-width: 400px;
-            width: 100%;
+            width: 85%;
             text-align: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-            display: none;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            position: absolute; 
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(30px) scale(0.95);
+            transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+            z-index: 10;
         }
-        .card.active { display: block; }
+        .card.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Image et Textes */
         img {
             width: 100%;
-            border-radius: 15px;
+            border-radius: 20px;
             max-height: 350px;
             object-fit: cover;
             margin-bottom: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            border: 2px solid rgba(255,255,255,0.2);
         }
-        h1 { font-size: 26px; margin-bottom: 15px; }
-        p { font-size: 16px; line-height: 1.5; margin-bottom: 25px; color: #f1f1f1; }
+        h1 { font-size: 28px; margin-bottom: 15px; text-shadow: 0 2px 5px rgba(0,0,0,0.5); }
+        p { font-size: 16px; line-height: 1.6; margin-bottom: 25px; color: #f8ecec; }
+
+        /* Boutons animés */
         .btn {
-            background-color: white;
-            color: #2c162b;
+            background: linear-gradient(45deg, #ff4d6d, #ff758c);
+            color: white;
             border: none;
-            padding: 15px 25px;
+            padding: 16px 30px;
             border-radius: 30px;
             font-weight: bold;
-            font-size: 16px;
+            font-size: 15px;
             cursor: pointer;
-            transition: 0.3s;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(255, 77, 109, 0.4);
             width: 100%;
             margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
+        .btn:hover, .btn:active {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(255, 77, 109, 0.6);
+        }
+
+        /* Grille des cadeaux */
         .grid-options {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 15px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
         .option-btn {
-            background-color: #4e2b4c;
+            background: rgba(255, 255, 255, 0.1);
             color: white;
-            border: 2px solid #6b3d69;
-            padding: 20px 10px;
-            border-radius: 15px;
-            font-size: 15px;
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 20px 5px;
+            border-radius: 18px;
+            font-size: 14px;
             font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .option-btn:hover, .option-btn:active {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px) scale(1.02);
+            border-color: #ff4d6d;
+            box-shadow: 0 10px 15px rgba(255, 77, 109, 0.3);
+        }
+        .option-btn span {
+            font-size: 28px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        /* Particules en arrière-plan */
+        .floating-heart {
+            position: absolute;
+            bottom: -10vh;
+            font-size: 20px;
+            animation: floatUp 6s linear infinite;
+            opacity: 0.6;
+            z-index: 1;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 0; }
+            10% { opacity: 0.8; }
+            50% { transform: translateY(-50vh) rotate(180deg) scale(1.2); }
+            100% { transform: translateY(-120vh) rotate(360deg) scale(1); opacity: 0; }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
         }
     </style>
 </head>
 <body>
+    <!-- Conteneur pour les coeurs qui volent -->
+    <div id="hearts-container"></div>
 
     <!-- ÉTAPE 1 -->
     <div class="card active" id="step1">
-        <!-- L'image qu'on va ajouter à l'étape 2 s'appellera photo.jpg -->
-        <img src="photo.jpg" alt="Camilla">
+        <!-- Attention, bien laisser Photo.jpg avec le P majuscule -->
+        <img src="Photo.jpg" alt="Camilla">
         <h1>Joyeux anniversaire mon amour ❤️ 🎂</h1>
         <p>Désolé de m'être endormi alors que j'aurais aimé être là au bon moment pour te souhaiter ton anniversaire. 🥺</p>
         <button class="btn" onclick="nextStep(2)">SUIVANT ➔</button>
@@ -80,7 +157,7 @@
 
     <!-- ÉTAPE 2 -->
     <div class="card" id="step2">
-        <h1 style="font-size: 40px; margin-bottom: 5px;">🎉❤️</h1>
+        <h1 style="font-size: 50px; margin-bottom: 10px; animation: pulse 2s infinite;">🎉❤️</h1>
         <h1>Pour toi, Camilla</h1>
         <p>Ça fait seulement 3 mois que nous sommes ensemble, mais tu as déjà pris une place particulière dans mon cœur. ❤️</p>
         <p>Je te souhaite énormément de bonheur, de réussite, de paix et que tous tes souhaits se réalisent.</p>
@@ -90,46 +167,87 @@
 
     <!-- ÉTAPE 3 -->
     <div class="card" id="step3">
-        <h1 style="font-size: 40px; margin-bottom: 5px;">🎁</h1>
-        <h1>Maintenant, c'est toi qui choisis ❤️</h1>
+        <h1 style="font-size: 45px; margin-bottom: 5px;">🎁</h1>
+        <h1 style="font-size: 24px;">Maintenant, choisis ❤️</h1>
         <p>Voici quelques possibilités. Choisis ce qui te ferait le plus plaisir. 👑</p>
         <div class="grid-options">
-            <button class="option-btn" onclick="chooseGift('Une paire de chaussures')">👟<br><br>Une paire de chaussures</button>
-            <button class="option-btn" onclick="chooseGift('De l\'argent')">💸<br><br>De l'argent</button>
-            <button class="option-btn" onclick="chooseGift('Une sortie en amoureux')">🍽️<br><br>Une sortie en amoureux</button>
-            <button class="option-btn" onclick="chooseGift('Un cadeau mystère')">🎀<br><br>Un cadeau mystère</button>
+            <button class="option-btn" onclick="chooseGift('Une paire de chaussures')"><span>👟</span>Une paire de chaussures</button>
+            <button class="option-btn" onclick="chooseGift('De l\'argent')"><span>💸</span>De l'argent</button>
+            <button class="option-btn" onclick="chooseGift('Une sortie en amoureux')"><span>🍽️</span>Une sortie en amoureux</button>
+            <button class="option-btn" onclick="chooseGift('Un cadeau mystère')"><span>🎀</span>Un cadeau mystère</button>
         </div>
-        <p style="font-size: 13px; margin-bottom: 0;">Réfléchis bien... 😏❤️</p>
+        <p style="font-size: 13px; margin-bottom: 0; opacity: 0.8;">Réfléchis bien... 😏❤️</p>
     </div>
 
     <!-- ÉTAPE 4 -->
     <div class="card" id="step4">
-        <h1 id="final-title">🎉❤️</h1>
+        <h1 id="final-title" style="color: #ff758c;">🎉❤️</h1>
         <p>Peu importe le cadeau que tu choisis, le plus beau cadeau pour moi reste de pouvoir partager des moments avec toi.</p>
         <p><strong>3 mois ensemble...</strong> et j'espère que ce n'est que le début de notre histoire. 🥺❤️</p>
-        <h1 style="font-size: 35px; margin-top: 40px;">Je t'aime, Camilla. ❤️</h1>
-        <p style="font-weight: bold; margin-top: 20px;">— Victor</p>
-        <button class="btn" style="background-color: transparent; border: 2px solid white; color: white;" onclick="nextStep(1)">🔄 RECOMMENCER</button>
+        <h1 style="font-size: 35px; margin-top: 30px; text-shadow: 0 0 10px rgba(255,77,109,0.8);">Je t'aime, Camilla. ❤️</h1>
+        <p style="font-weight: bold; margin-top: 15px; font-size: 18px;">— Victor</p>
     </div>
 
     <script>
+        // Changer d'étape
         function nextStep(step) {
-            document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
-            document.getElementById('step' + step).classList.add('active');
+            document.querySelectorAll('.card').forEach(c => {
+                c.classList.remove('active');
+            });
+            setTimeout(() => {
+                document.getElementById('step' + step).classList.add('active');
+            }, 100);
         }
 
+        // Choix du cadeau
         function chooseGift(giftName) {
             document.getElementById('final-title').innerText = "Tu as choisi : " + giftName + " ! 🥰";
             nextStep(4);
             
-            // REDIRECTION WHATSAPP : Remplace par ton numéro sans le +
+            // Lancer l'explosion de confettis
+            createConfetti();
+
+            // === METS TON NUMÉRO ICI ! ===
             setTimeout(function() {
-                let monNumero = "237672735447"; // <--- METS TON NUMERO ICI (ex: 23769...)
+                let monNumero = "237672735447"; // <--- REMPLACE PAR TON NUMÉRO (ex: 2376...)
                 let message = "Mon choix de cadeau d'anniversaire : " + giftName + " ❤️";
                 let urlWhatsApp = "https://wa.me/" + monNumero + "?text=" + encodeURIComponent(message);
                 window.location.href = urlWhatsApp;
-            }, 3500);
+            }, 4500); // Elle a 4.5 secondes pour lire avant d'être redirigée vers WhatsApp
         }
+
+        // Cœurs qui volent en continu
+        function createFloatingHearts() {
+            const container = document.getElementById('hearts-container');
+            const emojis = ['❤️', '✨', '💖', '🥰'];
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.classList.add('floating-heart');
+                heart.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+                heart.style.fontSize = (Math.random() * 15 + 15) + 'px';
+                container.appendChild(heart);
+                setTimeout(() => { heart.remove(); }, 7000);
+            }, 500); 
+        }
+
+        // Explosion à la fin
+        function createConfetti() {
+            for(let i = 0; i < 40; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.classList.add('floating-heart');
+                    heart.innerText = '🎉';
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.animationDuration = '3s';
+                    heart.style.fontSize = '30px';
+                    document.getElementById('hearts-container').appendChild(heart);
+                }, i * 50);
+            }
+        }
+
+        window.onload = createFloatingHearts;
     </script>
 </body>
 </html>
