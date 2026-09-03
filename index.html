@@ -30,17 +30,17 @@
         img {
             width: 100%;
             border-radius: 15px;
-            max-height: 300px;
+            max-height: 350px;
             object-fit: cover;
             margin-bottom: 20px;
         }
-        h1 { font-size: 24px; margin-bottom: 15px; }
+        h1 { font-size: 26px; margin-bottom: 15px; }
         p { font-size: 16px; line-height: 1.5; margin-bottom: 25px; color: #f1f1f1; }
         .btn {
             background-color: white;
             color: #2c162b;
             border: none;
-            padding: 12px 25px;
+            padding: 15px 25px;
             border-radius: 30px;
             font-weight: bold;
             font-size: 16px;
@@ -50,12 +50,11 @@
             width: 100%;
             margin-top: 10px;
         }
-        .btn:hover { background-color: #f0f0f0; }
         .grid-options {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 15px;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
         .option-btn {
             background-color: #4e2b4c;
@@ -63,60 +62,57 @@
             border: 2px solid #6b3d69;
             padding: 20px 10px;
             border-radius: 15px;
-            cursor: pointer;
             font-size: 15px;
             font-weight: bold;
-            transition: 0.2s;
         }
-        .option-btn:hover { background-color: #6b3d69; }
     </style>
 </head>
 <body>
 
-    <!-- ÉTAPE 1 : Accueil -->
+    <!-- ÉTAPE 1 -->
     <div class="card active" id="step1">
-        <!-- Remplace le lien de l'image par la photo de ta copine -->
-        <img src="LDS_LINK_DE_TA_PHOTO" alt="Photo">
+        <!-- L'image qu'on va ajouter à l'étape 2 s'appellera photo.jpg -->
+        <img src="photo.jpg" alt="Camilla">
         <h1>Joyeux anniversaire mon amour ❤️ 🎂</h1>
         <p>Désolé de m'être endormi alors que j'aurais aimé être là au bon moment pour te souhaiter ton anniversaire. 🥺</p>
         <button class="btn" onclick="nextStep(2)">SUIVANT ➔</button>
     </div>
 
-    <!-- ÉTAPE 2 : Message d'amour -->
+    <!-- ÉTAPE 2 -->
     <div class="card" id="step2">
-        <h1>Pour toi, mon cœur ❤️</h1>
+        <h1 style="font-size: 40px; margin-bottom: 5px;">🎉❤️</h1>
+        <h1>Pour toi, Camilla</h1>
         <p>Ça fait seulement 3 mois que nous sommes ensemble, mais tu as déjà pris une place particulière dans mon cœur. ❤️</p>
         <p>Je te souhaite énormément de bonheur, de réussite, de paix et que tous tes souhaits se réalisent.</p>
+        <p>Et surtout, j'espère pouvoir être encore à tes côtés pour célébrer beaucoup d'autres anniversaires avec toi. 🥰</p>
         <button class="btn" onclick="nextStep(3)">🎁 DÉCOUVRIR TON CADEAU</button>
     </div>
 
-    <!-- ÉTAPE 3 : Choix du cadeau -->
+    <!-- ÉTAPE 3 -->
     <div class="card" id="step3">
+        <h1 style="font-size: 40px; margin-bottom: 5px;">🎁</h1>
         <h1>Maintenant, c'est toi qui choisis ❤️</h1>
-        <p>Voici quelques possibilités. Choisis ce qui te ferait le plus plaisir 👑</p>
+        <p>Voici quelques possibilités. Choisis ce qui te ferait le plus plaisir. 👑</p>
         <div class="grid-options">
-            <button class="option-btn" onclick="chooseGift('Une paire de chaussures')">👟 Une paire de chaussures</button>
-            <button class="option-btn" onclick="chooseGift('De l argent')">💸 De l'argent</button>
-            <button class="option-btn" onclick="chooseGift('Une sortie en amoureux')">🍽️ Une sortie en amoureux</button>
-            <button class="option-btn" onclick="chooseGift('Un cadeau mystère')">🎁 Un cadeau mystère</button>
+            <button class="option-btn" onclick="chooseGift('Une paire de chaussures')">👟<br><br>Une paire de chaussures</button>
+            <button class="option-btn" onclick="chooseGift('De l\'argent')">💸<br><br>De l'argent</button>
+            <button class="option-btn" onclick="chooseGift('Une sortie en amoureux')">🍽️<br><br>Une sortie en amoureux</button>
+            <button class="option-btn" onclick="chooseGift('Un cadeau mystère')">🎀<br><br>Un cadeau mystère</button>
         </div>
+        <p style="font-size: 13px; margin-bottom: 0;">Réfléchis bien... 😏❤️</p>
     </div>
 
-    <!-- ÉTAPE 4 : Message de fin -->
+    <!-- ÉTAPE 4 -->
     <div class="card" id="step4">
-        <h1 id="final-title"> 🎉 ❤️</h1>
-        <p id="final-text">Peu importe le cadeau que tu choisis, le plus beau cadeau pour moi reste de pouvoir partager des moments avec toi.</p>
-        <p>3 mois ensemble... et j'espère que ce n'est que le début de notre histoire. 🥺</p>
-        <button class="btn" onclick="nextStep(1)">🔄 RECOMMANDER</button>
+        <h1 id="final-title">🎉❤️</h1>
+        <p>Peu importe le cadeau que tu choisis, le plus beau cadeau pour moi reste de pouvoir partager des moments avec toi.</p>
+        <p><strong>3 mois ensemble...</strong> et j'espère que ce n'est que le début de notre histoire. 🥺❤️</p>
+        <h1 style="font-size: 35px; margin-top: 40px;">Je t'aime, Camilla. ❤️</h1>
+        <p style="font-weight: bold; margin-top: 20px;">— Victor</p>
+        <button class="btn" style="background-color: transparent; border: 2px solid white; color: white;" onclick="nextStep(1)">🔄 RECOMMENCER</button>
     </div>
 
     <script>
-        function nextStep(step) {
-            document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
-            document.getElementById('step' + step).classList.add('active');
-        }
-
-        <script>
         function nextStep(step) {
             document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
             document.getElementById('step' + step).classList.add('active');
@@ -126,19 +122,13 @@
             document.getElementById('final-title').innerText = "Tu as choisi : " + giftName + " ! 🥰";
             nextStep(4);
             
-            // --- REDIRECTION WHATSAPP AUTOMATIQUE ---
-            // Remplace 237XXXXXXXXX par ton numéro WhatsApp complet avec l'indicatif du pays (ex: 237 pour le Cameroun, sans le +)
+            // REDIRECTION WHATSAPP : Remplace par ton numéro sans le +
             setTimeout(function() {
-                let monNumero = "237672735447"; 
-                let message = "Mon choix d'anniversaire : " + giftName + " ❤️";
+                let monNumero = "237672735447"; // <--- METS TON NUMERO ICI (ex: 23769...)
+                let message = "Mon choix de cadeau d'anniversaire : " + giftName + " ❤️";
                 let urlWhatsApp = "https://wa.me/" + monNumero + "?text=" + encodeURIComponent(message);
-                
-                // Ouvre WhatsApp avec son choix pré-rempli
                 window.location.href = urlWhatsApp;
-            }, 3000); // Elle verra le message de fin pendant 3 secondes avant d'être redirigée vers WhatsApp
-        }
-    </script>
-            // Optionnel : Tu pourrais ajouter une redirection WhatsApp automatique ici si tu veux qu'elle t'envoie son choix directement !
+            }, 3500);
         }
     </script>
 </body>
