@@ -1,1 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyeux Anniversaire mon amour ❤️</title>
+    <style>
+        body {
+            background-color: #2c162b;
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .card {
+            background-color: #3d213c;
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            display: none;
+        }
+        .card.active { display: block; }
+        img {
+            width: 100%;
+            border-radius: 15px;
+            max-height: 300px;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+        h1 { font-size: 24px; margin-bottom: 15px; }
+        p { font-size: 16px; line-height: 1.5; margin-bottom: 25px; color: #f1f1f1; }
+        .btn {
+            background-color: white;
+            color: #2c162b;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            width: 100%;
+            margin-top: 10px;
+        }
+        .btn:hover { background-color: #f0f0f0; }
+        .grid-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .option-btn {
+            background-color: #4e2b4c;
+            color: white;
+            border: 2px solid #6b3d69;
+            padding: 20px 10px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+        .option-btn:hover { background-color: #6b3d69; }
+    </style>
+</head>
+<body>
 
+    <!-- ÉTAPE 1 : Accueil -->
+    <div class="card active" id="step1">
+        <!-- Remplace le lien de l'image par la photo de ta copine -->
+        <img src="LDS_LINK_DE_TA_PHOTO" alt="Photo">
+        <h1>Joyeux anniversaire mon amour ❤️ 🎂</h1>
+        <p>Désolé de m'être endormi alors que j'aurais aimé être là au bon moment pour te souhaiter ton anniversaire. 🥺</p>
+        <button class="btn" onclick="nextStep(2)">SUIVANT ➔</button>
+    </div>
+
+    <!-- ÉTAPE 2 : Message d'amour -->
+    <div class="card" id="step2">
+        <h1>Pour toi, mon cœur ❤️</h1>
+        <p>Ça fait seulement 3 mois que nous sommes ensemble, mais tu as déjà pris une place particulière dans mon cœur. ❤️</p>
+        <p>Je te souhaite énormément de bonheur, de réussite, de paix et que tous tes souhaits se réalisent.</p>
+        <button class="btn" onclick="nextStep(3)">🎁 DÉCOUVRIR TON CADEAU</button>
+    </div>
+
+    <!-- ÉTAPE 3 : Choix du cadeau -->
+    <div class="card" id="step3">
+        <h1>Maintenant, c'est toi qui choisis ❤️</h1>
+        <p>Voici quelques possibilités. Choisis ce qui te ferait le plus plaisir 👑</p>
+        <div class="grid-options">
+            <button class="option-btn" onclick="chooseGift('Une paire de chaussures')">👟 Une paire de chaussures</button>
+            <button class="option-btn" onclick="chooseGift('De l argent')">💸 De l'argent</button>
+            <button class="option-btn" onclick="chooseGift('Une sortie en amoureux')">🍽️ Une sortie en amoureux</button>
+            <button class="option-btn" onclick="chooseGift('Un cadeau mystère')">🎁 Un cadeau mystère</button>
+        </div>
+    </div>
+
+    <!-- ÉTAPE 4 : Message de fin -->
+    <div class="card" id="step4">
+        <h1 id="final-title"> 🎉 ❤️</h1>
+        <p id="final-text">Peu importe le cadeau que tu choisis, le plus beau cadeau pour moi reste de pouvoir partager des moments avec toi.</p>
+        <p>3 mois ensemble... et j'espère que ce n'est que le début de notre histoire. 🥺</p>
+        <button class="btn" onclick="nextStep(1)">🔄 RECOMMANDER</button>
+    </div>
+
+    <script>
+        function nextStep(step) {
+            document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
+            document.getElementById('step' + step).classList.add('active');
+        }
+
+        function chooseGift(giftName) {
+            document.getElementById('final-title').innerText = "Tu as choisi : " + giftName + " ! 🥰";
+            nextStep(4);
+            // Optionnel : Tu pourrais ajouter une redirection WhatsApp automatique ici si tu veux qu'elle t'envoie son choix directement !
+        }
+    </script>
+</body>
+</html>
